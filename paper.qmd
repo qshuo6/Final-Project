@@ -1,0 +1,210 @@
+---
+title: "Heterogeneous Treatment Effect: Mthodologies and Evidence From Milan"
+author: "Vidisha Wani & Qiushuang Huo"
+format:
+  cmc-article-pdf:
+    fontsize: 12pt
+    margin-left: 1.5in
+    margin-right: 1.5in
+    margin-bottom: 1.2in
+    margin-top: 1.2in
+    keep-tex: true
+    fig-pos: 'tbp'
+    tbl-pos: 'tbp'
+    include-in-header: header.tex
+bibliography: aqrdbib1.bib
+abstract: | 
+  Exploiting both subsampling and triple difference-in-difference method, this paper examines the heterogeneous treatment effects of a green policy introduced in Milan on people’s voting behavior. In particular, this paper identifies the causal treatment effects for low-, middle-, and high-income groups and finds that the middle-income group is more responsive to the given policy. In addition, the paper discusses the relative strength of subsampling and triple difference-in-difference methods in estimating heterogeneous treatment effects. One major limitation of a previous literature investigating the causal treatment effect is also identified.
+---
+
+https://github.com/qshuo6/Final-Project.git
+
+# Introduction
+
+Environmental degradation has become a more pressing issue, and yet governments introduce environmentally friendly policies with caution, worrying about the potential political responses. This paper builds on @colantone2023 discussion of how an environmentally friendly policy, banning the use of Diesel Euro 4 in Area B of Milan, affects the voting behavior of those affected. Delving into the possible rationales for a change in voting behavior for the affected group, the paper examines heterogeneous treatment effects using both subsampling and triple difference-in-difference methods.
+
+There are multiple theories about the channel through which green policies affect people’s political attitudes and voting behavior. One issue of contention is whether change in political attitudes due to green policies is a result of the cost that people incur or the regressive distributional effects of the cost of environmental action. Douenne & Fabre (2022) conducted a representative survey in France after the Yellow Vest movement which started in reaction to the carbon tax policy. This policy involved using the funds collected as revenue mainly for budgetary purposes instead of being redistributed across households. The people were not in favor of this policy due to the inequitable distribution of cost [@douenne2022]. This is in line with the findings of Colantone et. al., (2023), where they examine the effects of the Area B car ban on the change in people’s likelihood of voting for the right wing populist party Lega. They find people are not opposed to pay a cost for environmental policies. However, they do change their voting behavior because they perceive the Area B policy to have an unequal distribution of the cost [@colantone2023].
+
+On the other hand, a study by Beiser-McGrath & Bernauer (2023) finds that individuals are concerned about how environmental policies (in this case, a carbon tax policy) impact their individual income. They conduct survey experiments across the United States and Germany to examine whether distributional impacts or individual level impacts of climate action policies determine people’s preferences with respect to costly policy-choices. In their experiment, they give the first group of participants information about how a policy would impact their income on an individual level. The second group of participants receive information about the distributional impact of the policy. The third group of participants receive information about both individual and distributional effects. The study finds that having information about distributional effects of the carbon tax policy has a statistically insignificant effect on people’s attitude towards this policy. Instead, they find that having information about the individual level cost they would have to bear if this policy was implemented does affect the participants’ attitude towards the carbon tax policy [@beiser-mcgrath_how_2023].
+
+Past literature also shows evidence of heterogeneity in the response to individual level cost across income groups. A study by Never et. al., (2022) makes use of survey data from Ghana, Peru and the Philippines to explore the linkages between decision making and individual level motivation. They find that despite having a knowledge and environmental concern, individuals belonging to the middle income group primarily make decisions based on the pecuniary impacts they may face [@never2022, @never2021].
+
+The summary statistics (Table 1) of the survey conducted in the Colantone et al.(2023) study show that out of the 1,073 respondents, 293 own a Diesel Euro 4 car (i.e. owners of the banned car). The income group that has the highest proportion of Diesel Euro 4 cars corresponds to the 30,000 to 60,000 euros bracket which is categorized as the middle income group in our study. The lack of agreement on the determinants of change in voting behavior, the difference in impact of pecuniary effects on decision making across income groups, and the constitution of the survey respondents in the Colantone et. al.(2023) study motivated us to examine the heterogeneous treatment effects of the Area B car ban across income groups to identify if a specific group has a stronger response to this policy and decipher the potential mechanisms driving the difference in the causal effect.
+
+|                                    |
+|:-----------------------------------|
+| ![](figures/tb2.png){height="35%"} |
+
+: Summary Statistics For Different Incomes {#tbl-main}
+
+The rest of this paper is organized as follows. In section II, we summarize the empirical strategy and key findings in Colantone et al. (2023). In section III, we examine the heterogeneous treatment effect for different income groups using subsampling. In section IV, we discuss the usage of triple difference-in-difference in estimating heterogeneous treatment effects and its strength relative to subsampling. In Section V, we propose a limitation of Colantone et al. (2023) in estimating the treatment effect and aim to address it when estimating treatment effect. Section VI presents the conclusions.
+
+# Discussion on Colantone et al. (2023): Empirical Strategy and Findings
+
+Colantone et. al.(2023) examine the effects of implementation of green policies for environmental action on the voting behavior of individuals by making use of a web-based survey of 1,073 car owners in Milan carried out by YouGov. The respondents in this survey all live in Area B, the region where the ban on Diesel Euro 4 cars was implemented. Of all the respondents, 293 were the owners of Diesel Euro 4 cars, therefore constituting the group affected by the policy or the “treatment” group. 412 respondents owned either Diesel Euro 5, Petrol Euro 4 and Petrol Euro 5 cars and were unaffected by this policy. They constitute the “control group”. These 4 categories make up the target group for this paper. Colantone et. al. employ the difference-in-difference method to identify the effects of the ban of diesel euro 4 cars on the vote choice of individuals in Area B with the following specification: $$
+Outcome_i\ =\ \alpha\ +\ \beta Diesel_i\ +\ \gamma Euro4_i\ + \delta Diesel\ \times\ Euro4_i\ +\ \theta X_i\ +\ \epsilon_i
+$$
+
+where, *i* represents the respondents, outcome*i* is the vote choice, diesel*i* is a binary variable which is 1 if individuals own diesel cars and, euro 4*i* is binary variable which is 1 if individuals own euro4 cars at the time of the policy announcement. These two variables act as fixed effects that control for any differences in individuals that are related to owning diesel versus petrol and euro 4 versus euro 5. Diesel x Euro 4*i* identifies who owns diesel euro 4 cars and is the main variable of interest. X*i* includes controls (for example, age and gender). Income FE and Education FE are also included in X*i* to control for any differences brought by those characteristics.
+
+The coefficient on Diesel x Euro 4*i* represents the effect of the policy. It shows the difference in the difference in outcome of Diesel Euro 4 v/s Diesel Euro 5 car owners and Petrol Euro 4 v/s Petrol Euro 5 car owners. Since the petrol car owners are unaffected by the policy, the difference between those serves as a benchmark for potential difference in outcomes of owners of cars with different emissions categories (i.e. Euro 4 and Euro 5). Since (delta) shows how outcomes of Diesel Euro 4 car owners differ from that of Diesel Euro 5 owners after deducting the benchmark estimate, (delta) thus shows the treatment effect. Here, the authors assume that different emission categories have similar orientations across fuel types.
+
+The authors run 6 models with different specifications and find that the coefficients on the Diesel x Euro 4*i* variable is positive and statistically significant when different covariates are included. The estimated treatment effects range from 9.4 percentage points to 18.3 percentage points depending on the specification (with an average estimated effect of 13.5 percentage points). This indicates that owning a car that is affected by the policy raises the probability of voting for Lega in the following election by 55% compared to the baseline rate of 24.4%. The results of this regression are shown in the appendix.
+
+The regression specification used in column 2 of Table (6) in the appendix has been used to check for the heterogeneous treatment effects in the following section. We examine the heterogeneity in treatment effects by creating sub samples on the basis of income. For this reason, we eliminate the income fixed effects from the regression model.
+
+# Heterogeneous Treatment Effects by Sub Sampling
+
+This study explores the different causal effects of the Area B policy across income groups using the survey data collected by the Colatone et. al. We make use of the following difference-in-differences specification:
+
+$$
+Outcome_i\ =\ \alpha\ +\ \beta Diesel_i\ +\ \gamma Euro4_i\ + \delta Diesel\ \times\ Euro4_i\ 
+$$ $$
++\ \theta age_i\ +\ \eta female_i\ +\ \iota Edu_i\ +\ \epsilon_i
+$$ Where, the specification remains the same as what Colatone et. al. have used in their study. However, income fixed effects have not been included in the specification since the sample has been sub-grouped by income to identify heterogeneity in the effect of the policy across the low, middle and high income group. The low income group constitutes individuals with income below 30,000 euros, the middle income group consists of individuals with income ranging from 30,000 euros to 70,000 euros, and the high income group includes individuals with income above 70,000 euros. We have dropped the observations where respondents have stated that they do not know which income group they belong to or they have chosen not to respond. This leaves us with 548 observations out of which, 161 belong to the low income group, 227 to the middle income group and 160 to the high income group.
+
+We expect there to be a higher estimate for the middle income group as opposed to the low and high income groups. Studies find that individuals’ support of environmental policies are driven more by the economic impact they face at an individual level than by factors such as distributional effects of these policies or possibilities of free-riding [@bernauer2015b]. Past scholarship also shows that the middle income group is more strongly motivated by the pecuniary impacts they face. Studies show that when it comes to making choices based on environmental benefits versus cost-effectiveness, the middle income group is more likely to base their decisions on cost saving potential as opposed to undertaking environmental action. This holds true despite them having a high level of environmental awareness [@never2021a; @never2022].
+
+|                                    |
+|:-----------------------------------|
+| ![](figures/tb6.png){height="40%"} |
+
+: Heterogeneous Treatment Effects by Sub-sampling {#tbl-main}
+
+To validate our hypothesis that as a result of the pecuniary impact of the policy, the middle income group would be more responsive in terms of their voting behavior, we run an empirical analysis to investigate the heterogeneous treatment effects of the policy across the three income groups, the results for which are presented in Table 2 . We see that the treatment effect estimate for the middle income group is higher than the low and high income group, which is in line with our expectation. The estimate for the middle income group is 0.049. This indicates that the policy leads the Diesel Euro 4 car owners in the middle income group to be more likely to vote for Lega by 4.9 percentage points as compared to non-Diesel Euro 4 car owners from the target group (footnote: the target group for this study include the owners of diesel euro 4, diesel euro 5, petrol euro 4 and petrol euro 5 cars). This estimate is 0.029 (2.9 percentage points) for the low income group and 0.023 (2.3 percentage points) for the high income group. These estimates indicate that the middle income group is more likely to change their voting behavior as opposed to the low and high income group. Decisions made by the middle income group are more sensitive to effects of policies on their pocketbook expenses which would cause them to be more likely to increase their support for the right wing populist party Lega. The results show statistically insignificant point estimates. This may be a consequence of the reduced sample size due to sub grouping. We elaborate on this matter in the next section of the paper.
+
+# Triple Difference-in-Difference and Sub Sampling Estimation
+
+While subsampling is a commonly used method to examine heterogeneous treatment effects, it certainly has its limitations, one most pronounced being the reduction in sample size, which results in a higher standard error and reduced statistical power [@loscalzo2006]. Therefore, in this section, we explore an alternative way, namely the triple difference-in-difference (DDD) method, to investigate heterogeneous treatment effect.
+
+Our empirical specification for DDD is as below, similar to that of @Olden2020. Here, we divide income into two groups, with those whose income is below 45,000 euros as the “Low Income Group” and those whose income is above 45,000 euros as the “High Income Group”. The dichotomous classification of income group conforms with the nature of DDD as the difference in the difference-in-difference (DiD) estimators of two groups. It should also be noted here for DDD to estimate heterogeneous causal treatment effect, the parallel assumption needs to hold for each subgroup. $$
+Y_{DEI}=\beta_0 + \beta_1  Diesel\ + \beta_2\ Euro4\ +\ \beta_3\ HighIncome\ +\ \beta_4\ Diesel\ \times\ Euro4\ 
+$$ $$
++\ \beta_5\ Diesel\ \times\ HighIncome\ +\ \beta_5\ Euro4\ \times\ HighIncome\ 
+$$ $$
++\ \beta_7\ Diesel\ \times\ Euro4\ \times\ HighIncome\ + \ \epsilon_{DEI}
+$$
+
+From the model, we could express coefficients in terms of the expected values of our outcome of interest (i.e. the coefficients capture the differences in expected values of outcomes for each (Diesel, Euro, Income) group), which is detailed in our appendix. The $\beta_7$ coefficient captures the heterogeneous treatment effect of the policy, using the high-income group as the base group. Results from DDD estiimation are reported in Table 3. The estimated coefficient on (Diesel x Euro 4 x Low Income) in column 1 suggests that the treatment effect of the policy in terms of the probability of voting for Lega is 13.7 percentage points lower for the low-income group as compared with the high-income group.
+
+|                      |
+|:---------------------|
+| ![](figures/tb7.png) |
+
+: Triple Difference-in-Difference and Sub Sampling Estimation {#tbl-main}
+
+In addition, while in principle DDD gives the difference in the treatment effects in the subgroups, the estimate doesn’t match the difference in point estimates of subsampling method, as shown in column 2 and 4 in Table 4 (the point estimate for the DiD of the low-income group is -0.050, and that of the high-income group is 0.107; the difference -0.050 - 0.107 = -0.157 is different from our point estimate of -0.137 from DDD). One potential explanation is that while we control for income in our DDD specification, we do not have an income fixed effect included when subsampling the data. To examine why this is the case, we then add individuals’ age and education as additional proxies of income in our subsampling specification. We hypothesize that with these proxies, the difference between estimates of the two methods would decrease. As result shown in column 4 and 5 in Table 3, the argument is consistent with our empirical result (the point estimate for the DiD of the low-income group is now 0.003, and that of the high-income group is 0.156; the difference 0.003 - 0.156 = - 0.153, which is closer to our point estimate of - 0.137 from DDD). This points to the second advantage of using DDD: it allows controlling for the variable that subgrouping is based on and would therefore give a more unbiased estimate of the heterogenous treatment effect.
+
+# Limitation in Treatment Effect Identification in Colantone et. al (2023)
+
+In this section, we present an important limitation we find in Colantone et al., (2023). Among the observations who are not categorized as the treated group (i.e. those who don’t own a Diesel-Euro 4 car model), there are 147 of them reporting a non-zero cost incurred by the policy in the sample used for main specification. Having these affected individuals in the control group would make the DiD estimator fundamentally biased. In this section, we first discuss potential reasons that could give rise to costs reported by these individuals who do not own the banned car model, and then present our result using the same specification as in Colantone et al., (2023) but with a cleaned sample that does not include these individuals. 
+There may be several reasons why owners of car models that are not banned report a non-zero cost in the survey. The first reason relates to the wording of the survey question on cost incurred by the policy. From the survey that the authors provided, individuals are asked ‘Thinking about the overall implications of the Area B policy on your household, how much did the policy cost you?’ Since individual’s car model only records their primary car, and question asks about the cost incurred by the policy on the household, it is possible that while the individual does not own a Diesel Euro 4 car, her household does, and she too experiences a cost from the policy. In addition, the identification of whether an individual owns a Diesel Euro 4 car only concerns whether it is their primary car. In the case where one may have multiple cars, while Diesel-Euro 4 is not their primary car, they could still experience a cost when the policy is implemented (for example, through a devaluation of their Diesel Euro 4 car). Lastly, we also consider the possibility of individuals misreporting their car type. While the possibility could lead to our finding of a non-zero cost being reported from non-Diesel-Euro 4 owners, given the significant proportion of the group, this is unlikely to be the sole reason explaining the finding.
+
+|                      |
+|:---------------------|
+| ![](figures/tb8.png) |
+
+: Comparison of Estimation Result from "Cleaned" and "Full" sample 
+
+Given that these observations could render the control group invalid and DiD estimate biased, we aim to construct a treatment effect estimate from the ‘cleaned’ sample without these observations. We acknowledge that simply dropping these observations has its limitation, for example, our estimate of treatment effect no longer speaks to the entire population of interest. However, it is still of value to obtain an unbiased estimate. We present the result of estimation in column (1) of Table (4), and column (2) shows the original result in the Colantone et al., (2023) paper. As opposed to the statistically significant treatment effect found in their paper, we fail to reject the null that treatment effect is significantly different from zero. This suggests that owning a car banned by the policy does not result in significantly different voting behavior as compared to owners of other car models. In fact, the only reason established in explaining the non-zero treatment effect in Colantone et al., (2023) paper concerns the distributional effect of the policy, yet Beiser-McGrath & Bernauer (2023) provides empirical evidence revealing that since it is hard for individuals to assess distributional cost of a given policy, it is unlikely to play a role in people’s response of the policy.
+
+
+
+
+
+
+
+::: {#refs}
+:::
+
+# Appendix {.appendix}
+
+
+
+|                        |
+|:-----------------------|
+| ![](figures/tb1.png) |
+
+: Descriptive Statistics for the Sample {#tbl-main}
+
+|                      |
+|:---------------------|
+| ![](figures/tb3.png) |
+
+: Voting for Lega in EU Elections 2019 {#tbl-main}
+
+|                      |
+|:---------------------|
+| ![](figures/tb4.png) |
+
+: Voting for Other Major Parties in EU Election of 2019 {#tbl-main}
+
+|                      |
+|:---------------------|
+| ![](figures/tb5.png) |
+
+: Compensation {#tbl-main}
+
+
+Derivation of triple dif-in-dif estimators: $\beta_7$ gives the difference in dif-in-dif estimators of low- and high- income groups.
+
+$$
+\beta_0\ =\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]
+$$ $$
+\beta_1\ =\ E[Y|Diesel\ =\ 1,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\ 
+$$ $$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\ 
+$$ $$
+\beta_2\ =\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 1,\ HighIncome\ =\ 0\ ]\ 
+$$ $$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\
+$$ $$
+\beta_3\ =\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 1\ ]\ 
+$$ $$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\
+$$ $$
+\beta_4\ =\ E[Y|Diesel\ =\ 1,\  Euro4\ =\ 1,\ HighIncome\ =\ 0\ ]\ 
+$$ $$
++\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\
+$$ $$
+-\ E[Y|Diesel\ =\ 1,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\
+$$ $$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 1,\ HighIncome\ =\ 0\ ]\
+$$ $$
+\beta_5\ =\ E[Y|Diesel\ =\ 1,\  Euro4\ =\ 0,\ HighIncome\ =\ 1\ ]\ 
+$$ $$
++\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\
+$$ $$
+-\ E[Y|Diesel\ =\ 1,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\
+$$ $$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 1\ ]\
+$$ $$
+\beta_6\ =\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 1,\ HighIncome\ =\ 1\ ]\ 
+$$ $$
++\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ]\
+$$ $$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 1,\ HighIncome\ =\ 0\ ]\
+$$ $$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 1\ ]\
+$$ $$
+\beta_7\ =\ [(E[Y|Diesel\ =\ 1,\  Euro4\ =\ 1,\ HighIncome\ =\ 1\ ]\ 
+$$ $$
+-\ (E[Y|Diesel\ =\ 1,\  Euro4\ =\ 0,\ HighIncome\ =\ 1\ ])
+$$ $$
+-\ (E[Y|Diesel\ =\ 0,\  Euro4\ =\ 1,\ HighIncome\ =\ 1\ ]
+$$ $$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 1\ ])
+$$ $$
+-\ [(E[Y|Diesel\ =\ 1,\  Euro4\ =\ 1,\ HighIncome\ =\ 0\ ]
+$$
+$$
+-\ E[Y|Diesel\ =\ 1,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ])
+$$
+$$
+-\ (E[Y|Diesel\ =\ 0,\  Euro4\ =\ 1,\ HighIncome\ =\ 0\ ]
+$$
+$$
+-\ E[Y|Diesel\ =\ 0,\  Euro4\ =\ 0,\ HighIncome\ =\ 0\ ])]
+$$
+
+#  {.appendix}
